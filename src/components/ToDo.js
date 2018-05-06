@@ -7,7 +7,8 @@ class ToDo extends Component {
          <input type="checkbox" checked={ this.props.isCompleted } />
          <span>{ this.props.description }</span>
        </li>
-     };
+     
    }
+ }
 
 export default ToDo;

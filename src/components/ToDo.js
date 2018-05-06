@@ -9,6 +9,5 @@ class ToDo extends Component {
        </li>
      };
    }
-}
 
 export default ToDo;

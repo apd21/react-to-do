@@ -21,6 +21,7 @@ export default class Todos extends Component {
     const todos = this.state.todos.filter((todo, todoIndex) => {
       return todoIndex !== index
     })
+  }
     this.setState({ todos })
   }
   render() {
@@ -71,8 +72,6 @@ return <ul>
               </ul>;
         }
       }
-
-
 
 class App extends Component {
   constructor(props) {

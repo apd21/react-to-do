@@ -2,76 +2,47 @@ import React, { Component } from 'react';
 import './App.css';
 import ToDo from './components/ToDo.js';
 
-export default class Todos extends Component {
-  constructor(props) {
+export default class App extends React.component {
+  constructor (props) {
     super(props);
-    this.state = { todos: [], text: '' };
-    this.removeItem = this.removeItem.bind(this)
+    this.state = {text: '', todos: [] }
   }
 
-  addTodo(e) {
-    e.preventDefault();
-    this.setState({ todos: [ this.state.text, ...this.state.todos ], text: '' });
+  handleDelete(itemToDelete) {
+    var newItems = {this.state.items.filter((_item) => {
+      return _item != itemToDelete
+    )}
+    this.setState({items: newItems});
   }
 
-  updateValue(e) {
-    this.setState({ text: [e.target.value]})
+  handleSubmit(event) {
+    event.preventDefault();
+    var text = this.state.text;
+    var newitems = this.state.items.concat (text);
+    this.setState({text: '', items: newItems});
   }
-  removeItem(index) {
-    const todos = this.state.todos.filter((todo, todoIndex) => {
-      return todoIndex !== index
-    })
+
+  handleChange(event) {
+    var text = event.target.value;
+    this.setState({text: text});
   }
-    this.setState({ todos })
-  }
+
   render() {
-    return(
-      <div>
-        <form onSubmit = {(e) => this.addTodo(e)}>
-          <input
-            placeholder="Add Todo"
-            value={this.state.text}
-            onChange={(e) => {this.updateValue(e)}}
-            />
-          <button type="submit">Add Todo</button>
-        </form>
-        <TodoList todos={this.state.todos} removeItem={this.removeItem} />
-      </div>
-    );
+    return <div>
+            <p> ToDo </p>
+
+            form onSubmit = {this.handleSubmit.bind(this)}>
+            <input onChange = {this.handleChange.bind(this)} value = {this.state.text}/>
+            <button>
+            submit
+            </button>
+            </form>
+
+            <ToDo
+            handleDelete = {this.handleDelete.bind(this)}
+            items = {this.state.items}/>
+            </div>
   }
-}
-
-class TodoList extends Component {
-  render() {
-    return(
-      <ul>
-        { this.props.todos.map((todo, index) => {
-          return <li onClick={(e) => { this.props.removeItem(index)}} key={todo}>{ todo }</li>
-        })}
-      </ul>
-    );
-  }
-}
-
-removeItem(index) {
-  this.setState({
-    todos: this.state.todos.filter(_, i) >= i !== index
-  })
-}
-
-render() {
-return <ul>
-        {this.props.items.map((item, i) => {
-          return <li key={item}>
-                    {item}
-                    <a href = '#' onClick = {this.handleDelete}>
-                    [x]
-                    </a>
-                    </li>
-              }) }
-              </ul>;
-        }
-      }
 
 class App extends Component {
   constructor(props) {

@@ -1,20 +1,5 @@
 import React, { Component } from 'react';
 
-export default class ToDo extends React.component {
-
-  render () {
-    return <ul>
-            {this.props.items.map((item, i) => {
-              return <li key = {item} >
-                        {item}
-                        <a href = '#' onClick = {this.handleDelete.bind(null, item)} >
-                          [x]
-                          </a>
-                        </li>
-            }) }
-            </ul>;
-  }
-}
 
 class ToDo extends Component {
   render() {

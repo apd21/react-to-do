@@ -2,48 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import ToDo from './components/ToDo.js';
 
-export default class App extends React.component {
-  constructor (props) {
-    super(props);
-    this.state = {text: '', todos: [] }
-  }
-
-  handleDelete(itemToDelete) {
-    var newItems = {this.state.items.filter((_item) => {
-      return _item != itemToDelete
-    )}
-    this.setState({items: newItems});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    var text = this.state.text;
-    var newitems = this.state.items.concat (text);
-    this.setState({text: '', items: newItems});
-  }
-
-  handleChange(event) {
-    var text = event.target.value;
-    this.setState({text: text});
-  }
-
-  render() {
-    return <div>
-            <p> ToDo </p>
-
-            form onSubmit = {this.handleSubmit.bind(this)}>
-            <input onChange = {this.handleChange.bind(this)} value = {this.state.text}/>
-            <button>
-            submit
-            </button>
-            </form>
-
-            <ToDo
-            handleDelete = {this.handleDelete.bind(this)}
-            items = {this.state.items}/>
-            </div>
-  }
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +13,38 @@ class App extends Component {
        ],
         newTodoDescription: ''
      };
+     this.delete = this.delete.bind(this);
    }
+
+   delete(id){
+     this.setState(prevState => ({
+         data: prevState.data.filter(el => el != id )
+     }));
+  }
+
+  render(){
+      return(
+          <Child delete={this.delete} data={this.state.data}/>
+      );
+   }
+}
+
+delete(id){
+      this.props.delete(id);
+  }
+
+  render(){
+     return(
+        <div>
+          {
+             this.props.data.map(el=>
+                 <p onClick={this.delete.bind(this, el)}>{el}</p>
+             )
+          }
+        </div>
+     )
+  }
+}
 
    handleChange(e) {
      this.setState({ newTodoDescription: e.target.value })

@@ -13,12 +13,14 @@ class App extends Component {
        ],
         newTodoDescription: ''
      };
+     this.removeTodo = this.removeTodo.bind(this);
+
    }
 
-   deleteTask(taskToDelete) {
-     _.remove(this.state.todos, todo => todo.task === taskToDelete);
-     this.setState( {todos:this.state.todos})
-   }
+   removeTodo(name) {
+     <TodoList todos={this.state.todos} removeTodo={this.removeTodo}/>
+    this.setState({ todo: this.state.todo.filter(el => el !== name) })
+}
 
    handleChange(e) {
      this.setState({ newTodoDescription: e.target.value })

@@ -13,38 +13,12 @@ class App extends Component {
        ],
         newTodoDescription: ''
      };
-     this.delete = this.delete.bind(this);
    }
 
-   delete(id){
-     this.setState(prevState => ({
-         data: prevState.data.filter(el => el != id )
-     }));
-  }
-
-  render(){
-      return(
-          <Child delete={this.delete} data={this.state.data}/>
-      );
+   deleteTask(taskToDelete) {
+     _.remove(this.state.todos, todo => todo.task === taskToDelete);
+     this.setState( {todos:this.state.todos})
    }
-}
-
-delete(id){
-      this.props.delete(id);
-  }
-
-  render(){
-     return(
-        <div>
-          {
-             this.props.data.map(el=>
-                 <p onClick={this.delete.bind(this, el)}>{el}</p>
-             )
-          }
-        </div>
-     )
-  }
-}
 
    handleChange(e) {
      this.setState({ newTodoDescription: e.target.value })

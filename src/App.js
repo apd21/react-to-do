@@ -13,14 +13,20 @@ class App extends Component {
        ],
         newTodoDescription: ''
      };
-     this.removeTodo = this.removeTodo.bind(this);
-
+     this.handleAddTodo =this.handleAddTodo.bind(this);
    }
 
-   removeTodo(name) {
-     <TodoList todos={this.state.todos} removeTodo={this.removeTodo}/>
-    this.setState({ todo: this.state.todo.filter(el => el !== name) })
-}
+   handleRemoveTodo(index) {
+     this.setState({
+       todos: this.state.todos.filter(function(e, i) {
+         return i !== index;
+       })
+     })
+   }
+
+   handleAddTodo(todo) {
+     this.setState({todos: [...this.state.todos, todo] })
+   }
 
    handleChange(e) {
      this.setState({ newTodoDescription: e.target.value })
@@ -51,7 +57,9 @@ class App extends Component {
         <form onSubmit={ (e) => this.handleSubmit(e) }>
         <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
           <input type="submit" />
+        <button className = "Delete" onClick = {this.handleRemoveTodo.bind(this, index)}; Delete </button>
         </form>
+
       </div>
     );
   }

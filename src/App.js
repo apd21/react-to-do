@@ -57,7 +57,7 @@ class App extends Component {
         <form onSubmit={ (e) => this.handleSubmit(e) }>
         <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
           <input type="submit" />
-        <button className = "Delete" onClick = {this.handleRemoveTodo.bind(this, index)}; Delete </button>
+        <button className = "Delete" onClick = {this.handleRemoveTodo.bind(this, index)} </button>
         </form>
 
       </div>

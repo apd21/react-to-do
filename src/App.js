@@ -48,6 +48,7 @@ class App extends Component {
       <ul>
       { this.state.todos.map( (todo, index) =>
         <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } />
+        remove = {this.handleRemove.bind(this)}
       )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
@@ -55,9 +56,6 @@ class App extends Component {
           <input type="submit" />
         </form>
 
-        <Todo>
-        handleRemove = {this.handleRemove.bind(this)}
-        todos = {this.state.todos} />
       </div>
     );
   }

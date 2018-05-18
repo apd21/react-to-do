@@ -22,6 +22,7 @@ class App extends Component {
      const newTodo = this.state.todos.filter((todo) => {
       if (todo.item != item) return todo;
      });
+   }
 
      this.setState({ todos:newTodos});
    }

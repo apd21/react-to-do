@@ -13,14 +13,14 @@ class App extends Component {
        ],
         newTodoDescription: ''
      };
-     this.removeTodo = this.removeTodo.bind(this)
+     this.removeToDo = this.removeToDo.bind(this)
    }
 
    removeTodo(index) {
-       const todo = this.state.todo.filter((todo, todoIndex) => {
-         return todoIndex !== index
+       const todo = this.state.ToDo.filter((ToDo, ToDoIndex) => {
+         return ToDoIndex !== index
        })
-       this.setState({ todo })
+       this.setState({ ToDo })
      }
 
    handleChange(e) {
@@ -53,7 +53,7 @@ class App extends Component {
         <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
           <input type="submit" />
         </form>
-         <Todo={this.state.todo} removeTodo={this.removeTodo} />
+         <ToDo={this.state.ToDo} removeTodo={this.removeToDo} />
 
       </div>
     );

@@ -21,7 +21,7 @@ class App extends Component {
      const ToDo = this.state.ToDo.filter((ToDo, ToDoIndex) => {
        return ToDoIndex !== index
      })
-     this.setState({ todos })
+     this.setState({ todos: todos });
      }
 
    handleChange(e) {

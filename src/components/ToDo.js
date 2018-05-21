@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
  class ToDo extends Component {
-   removeItem(e) {
-        this.props.removeTodo(ToDo);
+   deleteToDo(e) {
+         // splice this.props.todos??
     }
    render() {
      return (
        <li>
          <input type="checkbox" checked={ this.props.isCompleted } onChange={ this.props.toggleComplete } />
          <span>{this.props.description}</span>
-         { this.props.ToDo.map((ToDo) => {
-                    return <li onClick={() => { this.removeTodo(ToDo)}} key={ToDo}>{ ToDo }</li>
-                })}
+         { this.props.todos.map((todo) => {
+                      return <li onClick={(e) => { this.removeItem(e)}} key={todo}>{ todo }</li>
+                  })}
        </li>
+
      );
    }
  }

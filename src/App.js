@@ -17,10 +17,11 @@ class App extends Component {
    }
 
    deleteToDo(index) {
+     const todos = this.state.todos.slice();
      const ToDo = this.state.ToDo.filter((ToDo, ToDoIndex) => {
        return ToDoIndex !== index
      })
-     this.setState({ ToDo })
+     this.setState({ todos })
      }
 
    handleChange(e) {

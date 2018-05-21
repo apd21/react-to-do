@@ -9,8 +9,8 @@ import React, { Component } from 'react';
        <li>
          <input type="checkbox" checked={ this.props.isCompleted } onChange={ this.props.toggleComplete } />
          <span>{this.props.description}</span>
-         { this.props.ToDo.map((ToDo) => {
-                      return <li onClick={(e) => { this.deleteToDo(e)}} key={ToDo}>{ ToDo }</li>
+         { this.props.todos.map((ToDo) => {
+                      return <li onClick={(e) => { this.props.deleteToDo(e)}} key={ToDo}>{ ToDo }</li>
                   })}
        </li>
 

@@ -17,7 +17,6 @@ class App extends Component {
    }
 
    deleteToDo(index) {
-     const todos = this.state.todos.slice();
      const todo = this.state.todos.filter((todo, todoindex) => {
        return todoindex !== index
      })
